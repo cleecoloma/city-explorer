@@ -5,7 +5,7 @@ import Card from 'react-bootstrap/Card';
 class Map extends React.Component {
   render() {
     return (
-      <Card style={{ width: '18rem' }}>
+      <Card style={{ width: '18rem', alignItem: 'center' }}>
         <Card.Img variant="top" src="holder.js/100px180" />
         <Card.Body>
           <Card.Title>{this.props.cityName}</Card.Title>
