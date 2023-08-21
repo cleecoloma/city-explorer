@@ -40,7 +40,7 @@ class Search extends React.Component {
       .catch((error) => {
         this.setState({ warningStatus: error.response.status });
         this.setState({ warningMessage: error.message });
-        this.toggleModal;
+        this.toggleModal();
         console.log(
           'Unsuccessful: ',
           error,
@@ -59,6 +59,7 @@ class Search extends React.Component {
   };
 
   render() {
+    console.log(this.state.modalShow);
     return (
       <>
         <Form style={{ marginBottom: '1rem' }} onSubmit={this.handleForm}>
@@ -85,6 +86,7 @@ class Search extends React.Component {
           responseStatus={this.state.warningStatus}
           responseMessage={this.state.warningMessage}
           toggleModal={this.toggleModal}
+          modalShow={this.state.modalShow}
         />
       </>
     );

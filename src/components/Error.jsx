@@ -7,13 +7,13 @@ class Error extends React.Component {
     return (
       <Modal show={this.props.modalShow} onHide={this.props.toggleModal}>
         <Modal.Header
-          style={{ fontSize: '150%', fontWeight: 'bold' }}
+          style={{ fontSize: '150%', fontWeight: 'bold', backgroundColor: 'white' }}
           closeButton
         >
-          {this.props.responseStatus}
+          Error: {this.props.responseStatus}
         </Modal.Header>
-        <Modal.Body style={{ width: '500px' }}>
-          {this.props.responseMessage}
+        <Modal.Body style={{ width: '500px', backgroundColor: 'white' }}>
+          Error Message: {this.props.responseMessage}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="primary" onClick={() => this.props.toggleModal()}>
