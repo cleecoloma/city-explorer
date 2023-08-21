@@ -45,13 +45,14 @@ class Search extends React.Component {
   render() {
     return (
       <>
-        <Form onSubmit={this.handleForm}>
+        <Form style={{ marginBottom: '1rem' }} onSubmit={this.handleForm}>
           <Form.Group className="mb-3" controlId="formBasicText">
             <Form.Label>Search a City</Form.Label>
             <Form.Control
               type="text"
               placeholder="Enter city name here"
               onChange={this.handleChange}
+              style={{ width:'20rem' }}
               required
             />
           </Form.Group>
