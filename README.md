@@ -1,6 +1,7 @@
 # CITY EXPLORER
 
-project description goes here.
+**Author**: Chester Lee Coloma
+**Version**: 1.0.0
 
 ## Getting Started
 
@@ -46,7 +47,7 @@ Any environment configuration steps.
 ### Languages & tools
 
 ## Change Log
+08/21/2023 4:30pm - Added API call and display functionality
 
 ## Collaborators
-
-List collaborators here.
+> I collaborated with Samaad Turner on the Class-06 - Web Request-Response Cycle as shown on image on Architecture section.
