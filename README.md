@@ -1,4 +1,4 @@
-# PROJECT NAME
+# CITY EXPLORER
 
 project description goes here.
 
@@ -41,6 +41,7 @@ Any environment configuration steps.
     npm run build
 
 ## Architecture
+![Class 06 - Web Request-Response Cycle](/public/class-06-web-request-response-cycle.png)
 
 ### Languages & tools
 
