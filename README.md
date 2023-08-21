@@ -48,6 +48,16 @@ Any environment configuration steps.
 
 ## Change Log
 08/21/2023 4:30pm - Added API call and display functionality
+### Class 02 Lab
+1. Feature(s)
+    * API
+    * Locations
+    * Map
+    * Errors
+2. Estimate of time needed to complete: **3 hours**
+3. Start time: **12:30pm**
+4. Finish time: **4:30pm**
+5. Actual time needed to complete: **4 hours**
 
 ## Collaborators
 > I collaborated with Samaad Turner on the Class-06 - Web Request-Response Cycle as shown on image on Architecture section.
