@@ -7,7 +7,14 @@ class Map extends React.Component {
 
   render() {
     return (
-      <Card c style={{ width: '500px', padding: '2rem 0' }}>
+      <Card
+        c
+        style={{
+          width: '500px',
+          padding: '2rem 0',
+          boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px',
+        }}
+      >
         <Card.Img
           style={{ height: '400px', width: '400px' }}
           variant="top"

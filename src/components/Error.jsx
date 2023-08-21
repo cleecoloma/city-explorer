@@ -12,7 +12,7 @@ class Error extends React.Component {
         >
           Error: {this.props.responseStatus}
         </Modal.Header>
-        <Modal.Body style={{ width: '500px', backgroundColor: 'white' }}>
+        <Modal.Body style={{ width: '100%', backgroundColor: 'white' }}>
           Error Message: {this.props.responseMessage}
         </Modal.Body>
         <Modal.Footer>
