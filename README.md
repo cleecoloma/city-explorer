@@ -43,6 +43,7 @@ Any environment configuration steps.
 
 ## Architecture
 ![Class 06 - Web Request-Response Cycle](/public/class-06-web-request-response-cycle.png)
+![Class 07 - Web Request-Response Cycle](/public/class-07-web-request-response-cycle.png)
 
 ### Languages & tools
 
