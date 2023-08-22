@@ -48,7 +48,7 @@ Any environment configuration steps.
 
 ## Change Log
 08/21/2023 4:30pm - Added API call and display functionality
-### Class 02 Lab
+### Class 06 Lab
 1. Feature(s)
     * API
     * Locations
@@ -58,6 +58,15 @@ Any environment configuration steps.
 3. Start time: **12:30pm**
 4. Finish time: **4:30pm**
 5. Actual time needed to complete: **4 hours**
+
+08/23/2023 4:00pm - Weather Server Component
+### Class 07 Lab
+1. Feature(s)
+    * Weather Server Component
+2. Estimate of time needed to complete: **3 hours**
+3. Start time: **1:00pm**
+4. Finish time: **4:00pm**
+5. Actual time needed to complete: **3hours**
 
 ## Collaborators
 > I collaborated with Samaad Turner on the Class-06 - Web Request-Response Cycle as shown on image on Architecture section.
