@@ -1,5 +1,6 @@
 import React from 'react';
 import Map from './Map';
+import Weather from './Weather';
 import Error from './Error';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -16,6 +17,7 @@ class Search extends React.Component {
       warningStatus: '',
       warningMessage: '',
       modalShow: false,
+      weatherData: '',
     };
   }
 
@@ -34,19 +36,22 @@ class Search extends React.Component {
         `https://us1.locationiq.com/v1/search?key=${API_KEY}&q=${this.state.searchQuery}&format=json`
       )
       .then((response) => {
-        console.log('Successful: ', response.data);
+        console.log('LocationIQ - Successful: ', response.data);
+        // let currentLocation = response.data[0];
         this.setState({ location: response.data[0] });
+        return axios.get(
+          `http://localhost:3001/weather?searchQuery=${this.state.searchQuery}&lon=${response.data[0].lon}&lat=${response.data[0].lat}`
+        ); //another request to our express server after the 1st request finishes. This is a promise.
+      })
+      .then((response) => {
+        console.log('Weather - Successful: ', response);
+        this.setState({ weatherData: response.data });
       })
       .catch((error) => {
         this.setState({ warningStatus: error.response.status });
         this.setState({ warningMessage: error.message });
         this.toggleModal();
-        console.log(
-          'Unsuccessful: ',
-          error,
-          error.message,
-          error.response.status
-        );
+        console.log('LocationIQ - Unsuccessful: ', error);
       });
   };
 
@@ -59,7 +64,6 @@ class Search extends React.Component {
   };
 
   render() {
-    console.log(this.state.modalShow);
     return (
       <>
         <Form style={{ marginBottom: '1rem' }} onSubmit={this.handleForm}>
@@ -81,6 +85,11 @@ class Search extends React.Component {
           cityName={this.state.location ? this.state.location.display_name : ''}
           latitude={this.state.location ? this.state.location.lat : ''}
           longitude={this.state.location ? this.state.location.lon : ''}
+        />
+        <Weather
+          latitude={this.state.location ? this.state.location.lat : ''}
+          longitude={this.state.location ? this.state.location.lon : ''}
+          weatherData={this.state.weatherData ? this.state.weatherData : ''}
         />
         <Error
           responseStatus={this.state.warningStatus}
