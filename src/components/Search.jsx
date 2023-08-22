@@ -37,14 +37,15 @@ class Search extends React.Component {
       )
       .then((response) => {
         console.log('LocationIQ - Successful: ', response.data);
+        // let currentLocation = response.data[0];
         this.setState({ location: response.data[0] });
         return axios.get(
-          `http://localhost:3001/weather?searchQuery=${this.state.searchQuery}&lon=${this.state.location.lon}&lat=${this.state.location.lat}`
+          `http://localhost:3001/weather?searchQuery=${this.state.searchQuery}&lon=${response.data[0].lon}&lat=${response.data[0].lat}`
         ); //another request to our express server after the 1st request finishes. This is a promise.
       })
       .then((response) => {
         console.log('Weather - Successful: ', response);
-        this.setState({ weatherData: response.data })
+        this.setState({ weatherData: response.data });
       })
       .catch((error) => {
         this.setState({ warningStatus: error.response.status });
@@ -63,7 +64,6 @@ class Search extends React.Component {
   };
 
   render() {
-    // console.log(this.state.modalShow);
     return (
       <>
         <Form style={{ marginBottom: '1rem' }} onSubmit={this.handleForm}>
