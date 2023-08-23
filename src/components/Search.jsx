@@ -7,6 +7,7 @@ import Form from 'react-bootstrap/Form';
 import axios from 'axios';
 
 const API_KEY = import.meta.env.VITE_LOCATION_API_KEY;
+const SERVER_URL = import.meta.env.VITE_EXPRESS_SERVER_URL;
 
 class Search extends React.Component {
   constructor() {
@@ -37,19 +38,19 @@ class Search extends React.Component {
       )
       .then((response) => {
         console.log('LocationIQ - Successful: ', response.data);
-        // let currentLocation = response.data[0];
-        this.setState({ location: response.data[0] });
+        let currentLocation = response.data[0];
+        this.setState({ location: currentLocation });
         return axios.get(
-          `http://localhost:3001/weather?searchQuery=${this.state.searchQuery}&lon=${response.data[0].lon}&lat=${response.data[0].lat}`
+          `${SERVER_URL}/weather?searchQuery=${this.state.searchQuery}&lon=${currentLocation.lon}&lat=${currentLocation.lat}`
         ); //another request to our express server after the 1st request finishes. This is a promise.
       })
       .then((response) => {
         console.log('Weather - Successful: ', response);
-        this.setState({ weatherData: response.data });
+        this.setState({ weatherData: response });
       })
       .catch((error) => {
-        this.setState({ warningStatus: error.response.status });
-        this.setState({ warningMessage: error.message });
+        // this.setState({ warningStatus: error.response.status });
+        // this.setState({ warningMessage: error.message });
         this.toggleModal();
         console.log('LocationIQ - Unsuccessful: ', error);
       });
@@ -94,7 +95,7 @@ class Search extends React.Component {
             ) : null}
           </p>
         </Form>
-        <div className='display'>
+        <div className="display">
           <Map
             cityName={
               this.state.location ? this.state.location.display_name : ''
