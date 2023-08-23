@@ -15,6 +15,7 @@ class Map extends React.Component {
           boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px',
         }}
       >
+        <h3>CITY</h3>
         <Card.Img
           style={{ height: '400px', width: '400px' }}
           variant="top"

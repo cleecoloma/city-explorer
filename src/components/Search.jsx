@@ -67,19 +67,36 @@ class Search extends React.Component {
     return (
       <>
         <Form style={{ marginBottom: '1rem' }} onSubmit={this.handleForm}>
-          <Form.Group className="mb-3" controlId="formBasicText">
-            <Form.Label>Search a City</Form.Label>
+          <Form.Group controlId="formBasicText">
+            <Form.Label className="searchHeader">
+              <h2>Explore a City</h2>
+            </Form.Label>
             <Form.Control
+              className="searchInput"
               type="text"
               placeholder="Enter city name here"
               onChange={this.handleChange}
-              style={{ width: '20rem' }}
+              style={{ width: '30rem' }}
               required
             />
           </Form.Group>
-          <Button variant="primary" type="submit">
+          <Button
+            variant="success"
+            size="lg"
+            type="submit"
+          >
             Explore!
           </Button>
+          <p id="cityThings">
+            {this.state.searchQuery ? (
+              <h2>
+                Discover the charms of{' '}
+                <span id="cityInput">
+                  {this.state.searchQuery.toUpperCase()}
+                </span>
+              </h2>
+            ) : null}
+          </p>
         </Form>
         <Map
           cityName={this.state.location ? this.state.location.display_name : ''}

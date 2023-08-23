@@ -1,15 +1,42 @@
-* {
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Hachi+Maru+Pop&display=swap');
+
+#root {
   margin: 0 auto;
   text-align: center;
-  background-color: #FAF0E6;
-}
-
-header {
-  color: #164B60;
+  height: 100vh;
+  background-color: #faf0e6;
 }
 
 header h1 {
   margin: 2rem;
+  color: #164b60;
+  font-family: 'Bungee Shade', cursive;
+  font-size: 450%;
+}
+
+.searchHeader {
+  color: gray;
+}
+
+.searchInput {
+  margin: 0 auto 1rem;
+  text-align: center;
+}
+
+#cityThings {
+  margin: 1rem 0;
+  height: 3rem;
+  color: #164b60;
+  font-family: 'Hachi Maru Pop', cursive;
+}
+
+#cityInput {
+  text-decoration: underline;
+  color: black;
+}
+
+h3 {
+  background-color: white;
 }
 
 footer {
