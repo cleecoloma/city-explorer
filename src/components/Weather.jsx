@@ -5,10 +5,11 @@ class Map extends React.Component {
   render() {
     return (
       <Card className="cards">
+        <h3>WEATHER</h3>
         <Card.Body style={{ backgroundColor: 'white' }}>
-          <Card.Title style={{ backgroundColor: 'white' }}>
+          {/* <Card.Title style={{ backgroundColor: 'white' }}>
             Weather Data
-          </Card.Title>
+          </Card.Title> */}
           <Card.Text style={{ backgroundColor: 'white' }}>
             Date: {this.props.weatherData ? this.props.weatherData[0].date : ''}
             <br />
