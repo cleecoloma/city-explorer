@@ -4,14 +4,7 @@ import Card from 'react-bootstrap/Card';
 class Map extends React.Component {
   render() {
     return (
-      <Card
-        c
-        style={{
-          width: '500px',
-          padding: '2rem 0',
-          boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px',
-        }}
-      >
+      <Card className="cards">
         <Card.Body style={{ backgroundColor: 'white' }}>
           <Card.Title style={{ backgroundColor: 'white' }}>
             Weather Data

@@ -35,6 +35,19 @@ header h1 {
   color: black;
 }
 
+.cards {
+  width: 500px;
+  padding: 2rem 0;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  background-color: white;
+  margin: 0 2rem;
+}
+
+.display {
+  display: flex;
+  margin: 0 auto;
+}
+
 h3 {
   background-color: white;
 }

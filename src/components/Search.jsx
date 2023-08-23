@@ -80,11 +80,7 @@ class Search extends React.Component {
               required
             />
           </Form.Group>
-          <Button
-            variant="success"
-            size="lg"
-            type="submit"
-          >
+          <Button variant="success" size="lg" type="submit">
             Explore!
           </Button>
           <p id="cityThings">
@@ -98,16 +94,20 @@ class Search extends React.Component {
             ) : null}
           </p>
         </Form>
-        <Map
-          cityName={this.state.location ? this.state.location.display_name : ''}
-          latitude={this.state.location ? this.state.location.lat : ''}
-          longitude={this.state.location ? this.state.location.lon : ''}
-        />
-        <Weather
-          latitude={this.state.location ? this.state.location.lat : ''}
-          longitude={this.state.location ? this.state.location.lon : ''}
-          weatherData={this.state.weatherData ? this.state.weatherData : ''}
-        />
+        <div className='display'>
+          <Map
+            cityName={
+              this.state.location ? this.state.location.display_name : ''
+            }
+            latitude={this.state.location ? this.state.location.lat : ''}
+            longitude={this.state.location ? this.state.location.lon : ''}
+          />
+          <Weather
+            latitude={this.state.location ? this.state.location.lat : ''}
+            longitude={this.state.location ? this.state.location.lon : ''}
+            weatherData={this.state.weatherData ? this.state.weatherData : ''}
+          />
+        </div>
         <Error
           responseStatus={this.state.warningStatus}
           responseMessage={this.state.warningMessage}
