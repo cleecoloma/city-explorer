@@ -40,18 +40,17 @@ class Search extends React.Component {
       console.log('LocationIQ - Successful: ', locationResponse.data);
       let currentLocation = locationResponse.data[0];
       this.setState({ location: currentLocation });
-      //another request to our express server after the 1st request finishes. This is a promise.
-      let weatherAndMovieResponse = await axios.get(
-        `${SERVER_URL}/weather?searchQuery=${this.state.searchQuery}&lon=${currentLocation.lon}&lat=${currentLocation.lat}`
+      let weatherResponse = await axios.get(
+        `${SERVER_URL}/weather?lon=${currentLocation.lon}&lat=${currentLocation.lat}`
       );
-      console.log('Successful: ', weatherAndMovieResponse.data);
-      console.log(
-        weatherAndMovieResponse.data.sendWeatherDataToClient,
-        weatherAndMovieResponse.data.sendMovieDataToClient
+      let movieResponse = await axios.get(
+        `${SERVER_URL}/movie?searchQuery=${this.state.searchQuery}`
       );
+      console.log('Weather Successful: ', weatherResponse.data);
+      console.log('Movie Successful: ', movieResponse.data);
       this.setState({
-        weatherData: weatherAndMovieResponse.data.sendWeatherDataToClient,
-        movieData: weatherAndMovieResponse.data.sendMovieDataToClient,
+        weatherData: weatherResponse.data,
+        movieData: movieResponse.data,
       });
     } catch (error) {
       this.toggleModal();
@@ -59,7 +58,7 @@ class Search extends React.Component {
       this.setState({
         warningStatus: error.response.status,
         warningMessage: error.message,
-      })
+      });
     }
   };
 
@@ -84,7 +83,6 @@ class Search extends React.Component {
               type="text"
               placeholder="Enter city name here"
               onChange={this.handleChange}
-              // style={{ width: '30rem' }}
               required
             />
           </Form.Group>
@@ -92,36 +90,38 @@ class Search extends React.Component {
             Explore!
           </Button>
           <p id="cityThings">
-            {this.state.searchQuery &&
+            {this.state.searchQuery && (
               <h2>
                 Discover the charms of{' '}
                 <span id="cityInput">
                   {this.state.searchQuery.toUpperCase()}
                 </span>
               </h2>
-            }
+            )}
           </p>
         </Form>
         <div className="displayLocation">
-          {this.state.location && 
-          <>
-          <Map
-            cityName={
-              this.state.location ? this.state.location.display_name : ''
-            }
-            latitude={this.state.location ? this.state.location.lat : ''}
-            longitude={this.state.location ? this.state.location.lon : ''}
-          />
-          <Weather
-            weatherData={this.state.weatherData ? this.state.weatherData : ''}
-          />
-          </>
-          }
+          {this.state.location && (
+            <>
+              <Map
+                cityName={
+                  this.state.location ? this.state.location.display_name : ''
+                }
+                latitude={this.state.location ? this.state.location.lat : ''}
+                longitude={this.state.location ? this.state.location.lon : ''}
+              />
+              <Weather
+                weatherData={
+                  this.state.weatherData ? this.state.weatherData : ''
+                }
+              />
+            </>
+          )}
         </div>
         <div className="displayMovies">
           {this.state.movieData &&
             this.state.movieData.map((movie, index) => (
-                <Movie key={index} movieData={movie} />
+              <Movie key={index} movieData={movie} />
             ))}
         </div>
         <Error
