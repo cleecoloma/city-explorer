@@ -32,7 +32,6 @@ class Search extends React.Component {
 
   handleForm = async (e) => {
     e.preventDefault();
-    // console.log(API_KEY);
     console.log(this.state.searchQuery);
     try {
       let locationResponse = await axios.get(
