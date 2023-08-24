@@ -1,6 +1,7 @@
 import React from 'react';
 import Map from './Map';
 import Weather from './Weather';
+import Movie from './Movie';
 import Error from './Error';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -19,6 +20,7 @@ class Search extends React.Component {
       warningMessage: '',
       modalShow: false,
       weatherData: '',
+      movieData: '',
     };
   }
 
@@ -40,14 +42,21 @@ class Search extends React.Component {
       let currentLocation = locationResponse.data[0];
       this.setState({ location: currentLocation });
       //another request to our express server after the 1st request finishes. This is a promise.
-      let weatherBitResponse = await axios.get(
+      let weatherAndMovieResponse = await axios.get(
         `${SERVER_URL}/weather?searchQuery=${this.state.searchQuery}&lon=${currentLocation.lon}&lat=${currentLocation.lat}`
       );
-      console.log('Weather - Successful: ', weatherBitResponse.data);
-      this.setState({ weatherData: weatherBitResponse.data });
+      console.log('Successful: ', weatherAndMovieResponse.data);
+      // const { movieResponse, weatherResponse } = weatherAndMovieResponse.data;
+      console.log(
+        weatherAndMovieResponse.data.sendWeatherDataToClient,
+        weatherAndMovieResponse.data.sendMovieDataToClient
+      );
+      this.setState({
+        weatherData: weatherAndMovieResponse.data.sendWeatherDataToClient,
+        movieData: weatherAndMovieResponse.data.sendMovieDataToClient,
+      });
+
     } catch (error) {
-      // this.setState({ warningStatus: error.response.status });
-      // this.setState({ warningMessage: error.message });
       this.toggleModal();
       console.log('LocationIQ - Unsuccessful: ', error);
     }
@@ -104,6 +113,9 @@ class Search extends React.Component {
             weatherData={this.state.weatherData ? this.state.weatherData : ''}
           />
         </div>
+        <Movie
+          movieData={this.state.movieData ? this.state.movieData : ''}
+        />
         <Error
           responseStatus={this.state.warningStatus}
           responseMessage={this.state.warningMessage}
