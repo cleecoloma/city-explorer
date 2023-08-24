@@ -46,7 +46,6 @@ class Search extends React.Component {
         `${SERVER_URL}/weather?searchQuery=${this.state.searchQuery}&lon=${currentLocation.lon}&lat=${currentLocation.lat}`
       );
       console.log('Successful: ', weatherAndMovieResponse.data);
-      // const { movieResponse, weatherResponse } = weatherAndMovieResponse.data;
       console.log(
         weatherAndMovieResponse.data.sendWeatherDataToClient,
         weatherAndMovieResponse.data.sendMovieDataToClient
@@ -112,10 +111,8 @@ class Search extends React.Component {
           <Weather
             weatherData={this.state.weatherData ? this.state.weatherData : ''}
           />
+          <Movie movieData={this.state.movieData ? this.state.movieData : ''} />
         </div>
-        <Movie
-          movieData={this.state.movieData ? this.state.movieData : ''}
-        />
         <Error
           responseStatus={this.state.warningStatus}
           responseMessage={this.state.warningMessage}
