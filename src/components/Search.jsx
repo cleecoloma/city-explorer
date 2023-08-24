@@ -58,6 +58,10 @@ class Search extends React.Component {
     } catch (error) {
       this.toggleModal();
       console.log('LocationIQ - Unsuccessful: ', error);
+      this.setState({
+        warningStatus: error.response.status,
+        warningMessage: error.message,
+      })
     }
   };
 
