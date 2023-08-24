@@ -43,7 +43,8 @@ Any environment configuration steps.
 
 ## Architecture
 ![Class 06 - Web Request-Response Cycle](/public/class-06-web-request-response-cycle.png)
-
+![Class 07 - Web Request-Response Cycle](/public/class-07-web-request-response-cycle.png)
+![Class 08 - Web Request-Response Cycle](/public/class-08-web-request-response-cycle.png)
 ### Languages & tools
 
 ## Change Log
@@ -59,14 +60,25 @@ Any environment configuration steps.
 4. Finish time: **4:30pm**
 5. Actual time needed to complete: **4 hours**
 
-08/23/2023 4:00pm - Weather Server Component
+08/22/2023 4:00pm - Weather Server
 ### Class 07 Lab
 1. Feature(s)
-    * Weather Server Component
+    * Weather Server
 2. Estimate of time needed to complete: **3 hours**
 3. Start time: **1:00pm**
 4. Finish time: **4:00pm**
 5. Actual time needed to complete: **3hours**
 
+08/23/2023 11:00pm - Weather (live) Server and Movie Server
+### Class 08 Lab
+1. Feature(s)
+    * Weather (live) Server
+    * Movie Server
+2. Estimate of time needed to complete: **3 hours**
+3. Start time: **1:00pm**
+4. Finish time: **11:00pm**
+5. Actual time needed to complete: **about 8hours**
+
 ## Collaborators
-> I collaborated with Samaad Turner on the Class-06 - Web Request-Response Cycle as shown on image on Architecture section.
+> I collaborated with Samaad Turner on the Class-06/07 - Web Request-Response Cycle as shown on image on Architecture section.
+> ChatGPT and Jacob Knaack
