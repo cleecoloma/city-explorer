@@ -21,6 +21,38 @@ header h1 {
   text-align: center;
 }
 
+#formBasicText {
+  width: 30rem;
+}
+
+@media screen and (max-width: 550px) {
+  .searchHeader {
+    font-size: 80%;
+  }
+
+  header h1 {
+    font-size: 300%;
+  }
+
+  #formBasicText {
+    width: 20rem;
+  }
+
+  footer h5 {
+    font-size: 80%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  header h1 {
+    font-size: 200%;
+  }
+
+  #formBasicText {
+    width: 15rem;
+  }
+}
+
 #cityThings {
   margin: 1rem 0;
   height: 3rem;
@@ -65,6 +97,9 @@ header h1 {
 
 .displayLocation {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
   margin: 0 auto 2rem;
 }
 
