@@ -1,7 +1,7 @@
 # CITY EXPLORER
 
 **Author**: Chester Lee Coloma
-**Version**: 1.0.0
+**Version**: 1.1.0
 
 ## Getting Started
 
@@ -45,6 +45,7 @@ Any environment configuration steps.
 ![Class 06 - Web Request-Response Cycle](/public/class-06-web-request-response-cycle.png)
 ![Class 07 - Web Request-Response Cycle](/public/class-07-web-request-response-cycle.png)
 ![Class 08 - Web Request-Response Cycle](/public/class-08-web-request-response-cycle.png)
+![Class 09 - Web Request-Response Cycle](/public/class-09-web-request-response-cycle.png)
 ### Languages & tools
 
 ## Change Log
@@ -78,6 +79,16 @@ Any environment configuration steps.
 3. Start time: **1:00pm**
 4. Finish time: **11:00pm**
 5. Actual time needed to complete: **about 8hours**
+
+08/24/2023 3:00pm - Refactor Code
+### Class 08 Lab
+1. Feature(s)
+    * Weather Module
+    * Movie Module
+2. Estimate of time needed to complete: **3 hours**
+3. Start time: **1:00pm**
+4. Finish time: **3:00pm**
+5. Actual time needed to complete: **about 2hours**
 
 ## Collaborators
 > I collaborated with Samaad Turner on the Class-06/07 - Web Request-Response Cycle as shown on image on Architecture section.
