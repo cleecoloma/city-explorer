@@ -84,7 +84,7 @@ class Search extends React.Component {
               type="text"
               placeholder="Enter city name here"
               onChange={this.handleChange}
-              style={{ width: '30rem' }}
+              // style={{ width: '30rem' }}
               required
             />
           </Form.Group>
