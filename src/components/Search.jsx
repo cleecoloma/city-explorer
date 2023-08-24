@@ -28,32 +28,29 @@ class Search extends React.Component {
     });
   };
 
-  handleForm = (e) => {
+  handleForm = async (e) => {
     e.preventDefault();
     console.log(API_KEY);
     console.log(this.state.searchQuery);
-    axios
-      .get(
+    try {
+      let locationResponse = await axios.get(
         `https://us1.locationiq.com/v1/search?key=${API_KEY}&q=${this.state.searchQuery}&format=json`
-      )
-      .then((response) => {
-        console.log('LocationIQ - Successful: ', response.data);
-        let currentLocation = response.data[0];
-        this.setState({ location: currentLocation });
-        return axios.get(
-          `${SERVER_URL}/weather?searchQuery=${this.state.searchQuery}&lon=${currentLocation.lon}&lat=${currentLocation.lat}`
-        ); //another request to our express server after the 1st request finishes. This is a promise.
-      })
-      .then((response) => {
-        console.log('Weather - Successful: ', response);
-        this.setState({ weatherData: response });
-      })
-      .catch((error) => {
-        // this.setState({ warningStatus: error.response.status });
-        // this.setState({ warningMessage: error.message });
-        this.toggleModal();
-        console.log('LocationIQ - Unsuccessful: ', error);
-      });
+      );
+      console.log('LocationIQ - Successful: ', locationResponse.data);
+      let currentLocation = locationResponse.data[0];
+      this.setState({ location: currentLocation });
+      //another request to our express server after the 1st request finishes. This is a promise.
+      let weatherBitResponse = await axios.get(
+        `${SERVER_URL}/weather?searchQuery=${this.state.searchQuery}&lon=${currentLocation.lon}&lat=${currentLocation.lat}`
+      );
+      console.log('Weather - Successful: ', weatherBitResponse.data);
+      this.setState({ weatherData: weatherBitResponse.data });
+    } catch (error) {
+      // this.setState({ warningStatus: error.response.status });
+      // this.setState({ warningMessage: error.message });
+      this.toggleModal();
+      console.log('LocationIQ - Unsuccessful: ', error);
+    }
   };
 
   handleChange = (e) => {
@@ -104,8 +101,6 @@ class Search extends React.Component {
             longitude={this.state.location ? this.state.location.lon : ''}
           />
           <Weather
-            latitude={this.state.location ? this.state.location.lat : ''}
-            longitude={this.state.location ? this.state.location.lon : ''}
             weatherData={this.state.weatherData ? this.state.weatherData : ''}
           />
         </div>

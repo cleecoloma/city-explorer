@@ -10,11 +10,9 @@ class Map extends React.Component {
           {this.props.weatherData &&
             this.props.weatherData.map((weather, index) => (
               <Card.Text key={index}>
-                Date:{' '}
-                {this.props.weatherData[0].date}
+                Date: {weather.date}
                 <br />
-                Description:{' '}
-                {this.props.weatherData[0].description}
+                Description: {weather.description}
               </Card.Text>
             ))}
         </Card.Body>
