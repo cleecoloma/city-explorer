@@ -8,11 +8,12 @@ class Movie extends React.Component {
       <Card className="movieCards">
         <Card.Img
           variant="top"
+          className='movieCardImg'
           src={
             imageUrl
               ? 'https://image.tmdb.org/t/p/w500/' +
                 imageUrl
-              : 'https://placehold.co/500x750'
+              : 'https://placehold.co/350x525'
           }
         />
         <Card.Body style={{ backgroundColor: 'white' }}>
