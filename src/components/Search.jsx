@@ -54,7 +54,6 @@ class Search extends React.Component {
         weatherData: weatherAndMovieResponse.data.sendWeatherDataToClient,
         movieData: weatherAndMovieResponse.data.sendMovieDataToClient,
       });
-
     } catch (error) {
       this.toggleModal();
       console.log('LocationIQ - Unsuccessful: ', error);
@@ -94,17 +93,19 @@ class Search extends React.Component {
             Explore!
           </Button>
           <p id="cityThings">
-            {this.state.searchQuery ? (
+            {this.state.searchQuery &&
               <h2>
                 Discover the charms of{' '}
                 <span id="cityInput">
                   {this.state.searchQuery.toUpperCase()}
                 </span>
               </h2>
-            ) : null}
+            }
           </p>
         </Form>
-        <div className="display">
+        <div className="displayLocation">
+          {this.state.location && 
+          <>
           <Map
             cityName={
               this.state.location ? this.state.location.display_name : ''
@@ -115,7 +116,14 @@ class Search extends React.Component {
           <Weather
             weatherData={this.state.weatherData ? this.state.weatherData : ''}
           />
-          <Movie movieData={this.state.movieData ? this.state.movieData : ''} />
+          </>
+          }
+        </div>
+        <div className="displayMovies">
+          {this.state.movieData &&
+            this.state.movieData.map((movie, index) => (
+                <Movie key={index} movieData={movie} />
+            ))}
         </div>
         <Error
           responseStatus={this.state.warningStatus}

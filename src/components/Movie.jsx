@@ -3,18 +3,31 @@ import Card from 'react-bootstrap/Card';
 
 class Movie extends React.Component {
   render() {
+    let imageUrl = this.props.movieData.imageUrl;
     return (
-      <Card className="cards">
-        <h3>MOVIES</h3>
+      <Card className="movieCards">
+        <Card.Img
+          variant="top"
+          src={
+            imageUrl
+              ? 'https://image.tmdb.org/t/p/w500/' +
+                imageUrl
+              : 'https://placehold.co/500x750'
+          }
+        />
         <Card.Body style={{ backgroundColor: 'white' }}>
-          {this.props.movieData &&
-            this.props.movieData.map((movie, index) => (
-              <Card.Text key={index}>
-                Date: {movie.title}
-                <br />
-                Description: {movie.overview}
-              </Card.Text>
-            ))}
+          <Card.Title>Title: {this.props.movieData.title}</Card.Title>
+          <Card.Text>
+            Overview: {this.props.movieData.overview.slice(0, 200) + '...'}
+            <br />
+            Released On: {this.props.movieData.releasedOn}
+            <br />
+            Average Votes: {this.props.movieData.averageVotes}
+            <br />
+            Total Votes: {this.props.movieData.totalVotes}
+            <br />
+            Popularity: {this.props.movieData.popularity}
+          </Card.Text>
         </Card.Body>
       </Card>
     );
