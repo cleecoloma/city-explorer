@@ -9,7 +9,6 @@ class Map extends React.Component {
       <Card className="cards">
         <h3>LOCATION</h3>
         <Card.Img
-          // style={{ height: '400px', width: '400px' }}
           variant="top"
           src={`https://maps.locationiq.com/v3/staticmap?key=${API_KEY}&center=${this.props.latitude},${this.props.longitude}&zoom=12&size=400x400`}
         />
