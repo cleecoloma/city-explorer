@@ -6,6 +6,7 @@ import Error from './Error';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import axios from 'axios';
+import Loading from './Loading';
 
 const API_KEY = import.meta.env.VITE_LOCATION_API_KEY;
 const SERVER_URL = import.meta.env.VITE_EXPRESS_SERVER_URL;
@@ -20,6 +21,7 @@ class Search extends React.Component {
       modalShow: false,
       weatherData: null,
       movieData: null,
+      isVisible: false,
     };
   }
 
@@ -28,6 +30,12 @@ class Search extends React.Component {
       searchQuery: query,
     });
   };
+
+  handleVisibility = () => {
+    this.setState({ 
+      isVisible: !this.state.isVisible,
+    })
+  }
 
   handleForm = async (e) => {
     e.preventDefault();
@@ -98,6 +106,7 @@ class Search extends React.Component {
             )}
           </p>
         </Form>
+        <Loading isVisible={this.state.isVisible} />
         <div className="displayLocation">
           {this.state.location && (
             <>
@@ -120,7 +129,8 @@ class Search extends React.Component {
           {this.state.movieData &&
             this.state.movieData.map((movie, index) => (
               <Movie key={index} movieData={movie} />
-            ))}
+            ))
+            }
         </div>
         <Error
           responseError={this.state.warningError}
