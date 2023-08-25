@@ -10,10 +10,10 @@ class Error extends React.Component {
           style={{ fontSize: '150%', fontWeight: 'bold', backgroundColor: 'white' }}
           closeButton
         >
-          Error: {this.props.responseStatus}
+          Error: {this.props.responseError.status}
         </Modal.Header>
         <Modal.Body style={{ width: '100%', backgroundColor: 'white' }}>
-          Error Message: {this.props.responseMessage}
+          Error Message: {this.props.responseError.message}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="primary" onClick={() => this.props.toggleModal()}>
