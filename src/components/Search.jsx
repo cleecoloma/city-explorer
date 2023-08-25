@@ -16,7 +16,7 @@ class Search extends React.Component {
     this.state = {
       searchQuery: null,
       location: null,
-      warningError: '',
+      warningError: null,
       modalShow: false,
       weatherData: null,
       movieData: null,
@@ -55,7 +55,7 @@ class Search extends React.Component {
       this.toggleModal();
       console.log('LocationIQ - Unsuccessful: ', error);
       this.setState({
-        warningError: error.response,
+        warningError: error,
       });
     }
   };
