@@ -7,7 +7,11 @@ class Error extends React.Component {
     return (
       <Modal show={this.props.modalShow} onHide={this.props.toggleModal}>
         <Modal.Header
-          style={{ fontSize: '150%', fontWeight: 'bold', backgroundColor: 'white' }}
+          style={{
+            fontSize: '150%',
+            fontWeight: 'bold',
+            backgroundColor: 'white',
+          }}
           closeButton
         >
           Error: {this.props.responseStatus}

@@ -47,6 +47,48 @@ Any environment configuration steps.
 
 ## Change Log
 
+08/21/2023 4:30pm - Added API call and display functionality
+### Class 06 Lab
+1. Feature(s)
+    * API
+    * Locations
+    * Map
+    * Errors
+2. Estimate of time needed to complete: **3 hours**
+3. Start time: **12:30pm**
+4. Finish time: **4:30pm**
+5. Actual time needed to complete: **4 hours**
+
+08/22/2023 4:00pm - Weather Server
+### Class 07 Lab
+1. Feature(s)
+    * Weather Server
+2. Estimate of time needed to complete: **3 hours**
+3. Start time: **1:00pm**
+4. Finish time: **4:00pm**
+5. Actual time needed to complete: **3hours**
+
+08/23/2023 11:00pm - Weather (live) Server and Movie Server
+### Class 08 Lab
+1. Feature(s)
+    * Weather (live) Server
+    * Movie Server
+2. Estimate of time needed to complete: **3 hours**
+3. Start time: **1:00pm**
+4. Finish time: **11:00pm**
+5. Actual time needed to complete: **about 8hours**
+
+08/24/2023 3:00pm - Refactor Code
+### Class 08 Lab
+1. Feature(s)
+    * Weather Module
+    * Movie Module
+2. Estimate of time needed to complete: **3 hours**
+3. Start time: **1:00pm**
+4. Finish time: **3:00pm**
+5. Actual time needed to complete: **about 2hours**
+
+
 ## Collaborators
 
 List collaborators here.
