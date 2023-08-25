@@ -14,13 +14,12 @@ class Search extends React.Component {
   constructor() {
     super();
     this.state = {
-      searchQuery: '',
+      searchQuery: null,
       location: null,
-      warningStatus: '',
-      warningMessage: '',
+      warningError: null,
       modalShow: false,
-      weatherData: '',
-      movieData: '',
+      weatherData: null,
+      movieData: null,
     };
   }
 
@@ -56,8 +55,7 @@ class Search extends React.Component {
       this.toggleModal();
       console.log('LocationIQ - Unsuccessful: ', error);
       this.setState({
-        warningStatus: error.response.status,
-        warningMessage: error.message,
+        warningError: error,
       });
     }
   };
@@ -125,8 +123,7 @@ class Search extends React.Component {
             ))}
         </div>
         <Error
-          responseStatus={this.state.warningStatus}
-          responseMessage={this.state.warningMessage}
+          responseError={this.state.warningError}
           toggleModal={this.toggleModal}
           modalShow={this.state.modalShow}
         />
