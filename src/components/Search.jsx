@@ -130,7 +130,7 @@ class Search extends React.Component {
                 }
               />
               <Food
-                weatherData={this.state.foodData ? this.state.foodData : null}
+                foodData={this.state.foodData ? this.state.foodData : null}
               />
             </>
           )}

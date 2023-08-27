@@ -5,31 +5,48 @@ import Button from 'react-bootstrap/Button';
 class Food extends React.Component {
   render() {
     return (
-      <Card className="cards">
+      <Card
+        className="cards"
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+        }}
+      >
         <h3>FOOD TRUCKS</h3>
-        {this.props.foodData &&
-          this.props.foodData.map((food, index) => (
-            <>
-              <Card.Body style={{ backgroundColor: 'white' }}>
-                <Card.Text key={index}>
-                  Name: {food.name}
-                  Address: {food.displayAddress}
-                  Rating: {food.rating}
-                  Reviews: {food.reviewCount}
-                </Card.Text>
-              </Card.Body>
-              <Button
+        <div style={{ overflow:'auto', height: '550px' }}>
+          {this.props.foodData &&
+            this.props.foodData.map((food, index) => (
+              <Card.Body
                 key={index}
-                variant="primary"
-                size="sm"
-                href={food.url}
-                target="_blank"
-                rel="noopener noreferrer"
+                style={{
+                  backgroundColor: 'lightgray',
+                  borderRadius: '6px',
+                  margin: '1rem 1rem',
+                }}
               >
-                Link
-              </Button>
-            </>
-          ))}
+                <Card.Text>
+                  <strong>Name: {food.name}</strong> <br />
+                  Address: {food.displayAddress} <br />
+                  Rating: {food.rating} <br />
+                  Reviews: {food.reviewCount} <br />
+                </Card.Text>
+                <Button
+                  style={{
+                    width: '3rem',
+                    textAlign: 'center',
+                    margin: '0 auto',
+                  }}
+                  variant="primary"
+                  size="sm"
+                  href={food.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Link
+                </Button>
+              </Card.Body>
+            ))}
+        </div>
       </Card>
     );
   }
