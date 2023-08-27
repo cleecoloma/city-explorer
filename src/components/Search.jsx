@@ -1,6 +1,7 @@
 import React from 'react';
 import Map from './Map';
 import Weather from './Weather';
+import Food from './Food'
 import Movie from './Movie';
 import Error from './Error';
 import Button from 'react-bootstrap/Button';
@@ -22,6 +23,7 @@ class Search extends React.Component {
       weatherData: null,
       movieData: null,
       isVisible: false,
+      foodData: null,
     };
   }
 
@@ -53,15 +55,20 @@ class Search extends React.Component {
       let movieResponse = await axios.get(
         `${SERVER_URL}/movie?searchQuery=${this.state.searchQuery}`
       );
+      let foodResponse = await axios.get(
+        `${SERVER_URL}/food?lon=${currentLocation.lon}&lat=${currentLocation.lat}`
+      );
       console.log('Weather Successful: ', weatherResponse.data);
       console.log('Movie Successful: ', movieResponse.data);
+      console.log('Food Successful: ', foodResponse.data)
       this.setState({
         weatherData: weatherResponse.data,
         movieData: movieResponse.data,
+        foodData: foodResponse.data
       });
     } catch (error) {
       this.toggleModal();
-      console.log('LocationIQ - Unsuccessful: ', error);
+      // console.log('LocationIQ - Unsuccessful: ', error);
       this.setState({
         warningError: error,
       });
@@ -112,15 +119,18 @@ class Search extends React.Component {
             <>
               <Map
                 cityName={
-                  this.state.location ? this.state.location.display_name : ''
+                  this.state.location ? this.state.location.display_name : null
                 }
-                latitude={this.state.location ? this.state.location.lat : ''}
-                longitude={this.state.location ? this.state.location.lon : ''}
+                latitude={this.state.location ? this.state.location.lat : null}
+                longitude={this.state.location ? this.state.location.lon : null}
               />
               <Weather
                 weatherData={
-                  this.state.weatherData ? this.state.weatherData : ''
+                  this.state.weatherData ? this.state.weatherData : null
                 }
+              />
+              <Food
+                weatherData={this.state.foodData ? this.state.foodData : null}
               />
             </>
           )}
@@ -129,8 +139,7 @@ class Search extends React.Component {
           {this.state.movieData &&
             this.state.movieData.map((movie, index) => (
               <Movie key={index} movieData={movie} />
-            ))
-            }
+            ))}
         </div>
         <Error
           responseError={this.state.warningError}
