@@ -1,11 +1,13 @@
 import React from 'react';
 import Map from './Map';
 import Weather from './Weather';
+import Food from './Food'
 import Movie from './Movie';
 import Error from './Error';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import axios from 'axios';
+import Loading from './Loading';
 
 const API_KEY = import.meta.env.VITE_LOCATION_API_KEY;
 const SERVER_URL = import.meta.env.VITE_EXPRESS_SERVER_URL;
@@ -20,6 +22,8 @@ class Search extends React.Component {
       modalShow: false,
       weatherData: null,
       movieData: null,
+      isVisible: false,
+      foodData: null,
     };
   }
 
@@ -28,6 +32,12 @@ class Search extends React.Component {
       searchQuery: query,
     });
   };
+
+  handleVisibility = () => {
+    this.setState({ 
+      isVisible: !this.state.isVisible,
+    })
+  }
 
   handleForm = async (e) => {
     e.preventDefault();
@@ -45,15 +55,20 @@ class Search extends React.Component {
       let movieResponse = await axios.get(
         `${SERVER_URL}/movie?searchQuery=${this.state.searchQuery}`
       );
+      let foodResponse = await axios.get(
+        `${SERVER_URL}/food?lon=${currentLocation.lon}&lat=${currentLocation.lat}`
+      );
       console.log('Weather Successful: ', weatherResponse.data);
       console.log('Movie Successful: ', movieResponse.data);
+      console.log('Food Successful: ', foodResponse.data)
       this.setState({
         weatherData: weatherResponse.data,
         movieData: movieResponse.data,
+        foodData: foodResponse.data
       });
     } catch (error) {
       this.toggleModal();
-      console.log('LocationIQ - Unsuccessful: ', error);
+      // console.log('LocationIQ - Unsuccessful: ', error);
       this.setState({
         warningError: error,
       });
@@ -98,20 +113,24 @@ class Search extends React.Component {
             )}
           </p>
         </Form>
+        <Loading isVisible={this.state.isVisible} />
         <div className="displayLocation">
           {this.state.location && (
             <>
               <Map
                 cityName={
-                  this.state.location ? this.state.location.display_name : ''
+                  this.state.location ? this.state.location.display_name : null
                 }
-                latitude={this.state.location ? this.state.location.lat : ''}
-                longitude={this.state.location ? this.state.location.lon : ''}
+                latitude={this.state.location ? this.state.location.lat : null}
+                longitude={this.state.location ? this.state.location.lon : null}
               />
               <Weather
                 weatherData={
-                  this.state.weatherData ? this.state.weatherData : ''
+                  this.state.weatherData ? this.state.weatherData : null
                 }
+              />
+              <Food
+                foodData={this.state.foodData ? this.state.foodData : null}
               />
             </>
           )}
